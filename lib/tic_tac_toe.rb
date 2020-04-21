@@ -52,3 +52,13 @@ end
 def turn_count(board)
   board.count{|token| token == "X" || token == "O"}
 end
+
+def move(board, position, player)
+  board[position] = player
+end
+
+def winner(board)
+  if winning_combo = won?(board)
+    board[winning_combo.first]
+  end
+end

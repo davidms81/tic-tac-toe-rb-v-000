@@ -82,4 +82,5 @@ def player_move(board, position, player)
 end
 
 def play(board)
+  input = gets
 end

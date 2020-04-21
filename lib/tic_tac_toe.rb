@@ -80,3 +80,6 @@ end
 def player_move(board, position, player)
   board[position] = player
 end
+
+def play
+end

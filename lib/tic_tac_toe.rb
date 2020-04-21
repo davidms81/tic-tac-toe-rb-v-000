@@ -41,7 +41,7 @@ def over?(board)
   won?(board) || draw?(board)
 end
 
-def input_to_position(user_input)
+def input_to_index(user_input)
   user_input.to_i - 1
 end
 

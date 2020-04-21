@@ -25,5 +25,5 @@ def player_move(board, position, player)
   board[position] = player
 end
 
-def position_taken?
+def position_taken?(board, position)
 end

@@ -17,20 +17,32 @@ def display_board(board)
   puts " #{board[6]} | #{board[7]} | #{board[8]} "
 end
 
-def input_to_index(user_input)
-  user_input.to_i - 1
-end
-
-def player_move(board, position, player)
-  board[position] = player
-end
-
-def position_taken?(board, position)
-  board[position] == "X" || board[position] == "O"
-end
-
 def valid_move?(board, position)
-  !position_taken?(board,position) && position.between?(0,8)
+  position.between?(0,8) && !position_taken?(board, position)
+end
+
+def won?(board)
+  WIN_COMBINATIONS.detect do |combo|
+    board[combo[0]] == board[combo[1]] &&
+    board[combo[1]] == board[combo[2]] &&
+    position_taken?(board, combo[0])
+  end
+end
+
+def full?(board)
+  board.all?{|token| token == "X" || token == "O"}
+end
+
+def draw?(board)
+  !won?(board) && full?(board)
+end
+
+def over?(board)
+  won?(board) || draw?(board)
+end
+
+def input_to_position(user_input)
+  user_input.to_i - 1
 end
 
 def turn(board)
@@ -43,6 +55,10 @@ def turn(board)
   else
     turn(board)
   end
+end
+
+def position_taken?(board, position)
+  board[position]== "X" || board[position] == "O"
 end
 
 def current_player(board)

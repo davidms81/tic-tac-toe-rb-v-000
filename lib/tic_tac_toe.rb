@@ -78,3 +78,7 @@ def winner(board)
     board[winning_combo.first]
   end
 end
+
+def player_move(board, position, player)
+  board[position] = player
+end

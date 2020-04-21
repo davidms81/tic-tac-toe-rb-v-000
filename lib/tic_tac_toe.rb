@@ -84,10 +84,9 @@ def player_move(board, position, player)
 end
 
 def play(board)
-  while !over?(board)
+  if !over?(board)
     turn(board)
-  end
-  if won?(board)
+  elsif won?(board)
     puts "Congratulations #{winner(board)}!"
   elsif draw?(board)
     puts "Cat's Game!"
